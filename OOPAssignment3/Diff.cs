@@ -6,7 +6,7 @@ namespace OOPAssignment3
     {
         string[] Args { get; set; }
         public void Help() => Console.WriteLine("Please enter: diff [text1] [text2]");
-        private List<int> DiffLines()
+        private int[] DiffLines()
         {
             FileReader file1 = new FileReader(Args[1]);
             FileReader file2 = new FileReader(Args[2]);
@@ -19,7 +19,7 @@ namespace OOPAssignment3
                     changedLineNumbers.Add(i);
                 }
             }
-            return changedLineNumbers;
+            return changedLineNumbers.ToArray();
         }
         public void Run()
         {
