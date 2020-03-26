@@ -11,7 +11,20 @@ namespace OOPAssignment3
             FileReader file1 = new FileReader(Args[1]);
             FileReader file2 = new FileReader(Args[2]);
             List<int> changedLineNumbers = new List<int>();
-            for(int i = 0; i < file1.fileContents.Length; i++)
+            int smallerFileSize;
+            int largerFileSize;
+            if (file1.fileContents.Length > file2.fileContents.Length)
+            {
+                smallerFileSize = file2.fileContents.Length;
+                largerFileSize = file1.fileContents.Length;
+            }
+            else
+            {
+                smallerFileSize = file1.fileContents.Length;
+                largerFileSize = file2.fileContents.Length;
+            }
+
+            for (int i = 0; i < smallerFileSize; i++)
             {
                 if (file1.fileContents[i] != file2.fileContents[i])
                 {
@@ -19,7 +32,18 @@ namespace OOPAssignment3
                     changedLineNumbers.Add(i);
                 }
             }
+
+            for (int i = smallerFileSize; i < largerFileSize; i++)
+            {
+                Console.WriteLine($"Line {i + 1} is different.");
+                changedLineNumbers.Add(i);
+            }
+
             return changedLineNumbers.ToArray();
+        }
+        private void DiffChars(int[] changedLines)
+        {
+
         }
         public void Run()
         {
@@ -28,7 +52,11 @@ namespace OOPAssignment3
             else if (Args[1].ToLower() == "help")
                 Help();
             else if (Args.Length == 3)
-                Console.WriteLine(DiffLines()); 
+            {
+                int[] changedLines = DiffLines();
+                DiffChars(changedLines);
+
+            }
             else
                 Console.WriteLine("Diff requires exactly two arguments!");
         }
