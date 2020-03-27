@@ -40,15 +40,15 @@ namespace OOPAssignment3
                 if (latterLinePointer != null)
                     latterCharArray = latterLinePointer.ToCharArray();
 
+                // If both the char arrays hold characters.
                 if (formerCharArray != null && latterCharArray != null)
                 {
                     // Figure out the larger line size. (character lengths).
                     int largerLineSize = formerCharArray.Length;
                     if (formerCharArray.Length < latterCharArray.Length)
                         largerLineSize = latterCharArray.Length;
-                    //First for loop shows additions.
+                    //First for loop shows subtractions.
                     Console.Write("-: ");
-                    // Second for loop does subtractions.
                     for (int j = 0; j < largerLineSize; j++)
                     {
                         /* Create the specific char.
@@ -74,6 +74,7 @@ namespace OOPAssignment3
                     }
                     Console.WriteLine();
                     Console.ResetColor();
+                    // Second for loop shows additions.
                     Console.Write("+: ");
                     for (int j = 0; j < largerLineSize; j++)
                     {
