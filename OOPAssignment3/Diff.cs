@@ -40,19 +40,17 @@ namespace OOPAssignment3
                 if (latterLinePointer != null)
                     latterCharArray = latterLinePointer.ToCharArray();
 
-                List<char> same = new List<char>();
-                List<char> additions = new List<char>();
-                List<char> subtractions = new List<char>();
-                //if both the char arrays are not null (they have text)
                 if (formerCharArray != null && latterCharArray != null)
                 {
-                    // Figure out the larget line size. (character lengths).
+                    // Figure out the larger line size. (character lengths).
                     int largerLineSize = formerCharArray.Length;
                     if (formerCharArray.Length < latterCharArray.Length)
                         largerLineSize = latterCharArray.Length;
-
+                    //First for loop shows additions.
+                    Console.Write("-: ");
+                    // Second for loop does subtractions.
                     for (int j = 0; j < largerLineSize; j++)
-                    { 
+                    {
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
                          */
@@ -62,39 +60,60 @@ namespace OOPAssignment3
                         char latterCharPointer = default;
                         if (j < latterCharArray.Length)
                             latterCharPointer = latterCharArray[j];
-                        // If the chars are equal, then print normally.
-                        if (formerCharPointer == latterCharPointer)
-                            same.Add(formerCharPointer);
-                        // If the former char pointer is not null, and the latter is null, show it as removed.
-                        else if (formerCharPointer != '\0' && latterCharPointer == '\0')
+                        // If the formerCharPointer isn't null, and the first one is or they arent the same, class it as a subtraction.
+                        if (formerCharPointer != '\0' && latterCharPointer == '\0' || formerCharPointer != latterCharPointer)
                         {
-                            subtractions.Add(formerCharPointer);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(formerCharPointer);
                         }
                         else
                         {
-                            subtractions.Add(formerCharPointer);
-                            additions.Add(latterCharPointer);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write(formerCharPointer);
                         }
                     }
+                    Console.WriteLine();
+                    Console.ResetColor();
+                    Console.Write("+: ");
+                    for (int j = 0; j < largerLineSize; j++)
+                    {
+                        /* Create the specific char.
+                         * if the char index is in range, assign it to the indexed value of the char array
+                         */
+                        char formerCharPointer = default;
+                        if (j < formerCharArray.Length)
+                            formerCharPointer = formerCharArray[j];
+                        char latterCharPointer = default;
+                        if (j < latterCharArray.Length)
+                            latterCharPointer = latterCharArray[j];
+                        // If the formerCharPointer is null, and the second one isn't or they arent the same, class it as an addition.
+                        if (formerCharPointer == '\0' && latterCharPointer != '\0' || formerCharPointer != latterCharPointer)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.Write(latterCharPointer);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.Write(formerCharPointer);
+                        }
+                    }
+                    Console.WriteLine();
                 }
                 if (formerCharArray == null && latterCharArray != null)
-                    additions = latterCharArray.ToList();
-                if (formerCharArray != null && latterCharArray == null)
-                    subtractions = formerCharArray.ToList();
-                
-                Console.Write("- ");
-                Console.Write(new string(same.ToArray()));
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(new string(subtractions.ToArray()));
-                Console.WriteLine();
-                Console.ResetColor();
+                {
+                    Console.Write("+: ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine(latterCharArray);
+                }
 
-                Console.Write("+ ");
-                Console.Write(new string(same.ToArray()));
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(new string(additions.ToArray()));
-                Console.WriteLine();
-                Console.ResetColor();
+                if (formerCharArray != null && latterCharArray == null)
+                {
+                    Console.Write("-: ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(formerCharArray);
+                }
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
         public void Help() => Console.WriteLine("Please enter: diff [text1] [text2]");

@@ -8,6 +8,7 @@ namespace OOPAssignment3
         {
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(">: [INPUT] ");
                 string userArguments = Console.ReadLine();
                 string[] parsedSplitArgs = userArguments.Split(" ");
