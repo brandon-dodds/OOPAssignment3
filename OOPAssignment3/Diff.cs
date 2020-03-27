@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace OOPAssignment3
 {
     class Diff : ICommandable
@@ -39,6 +41,9 @@ namespace OOPAssignment3
                 if (latterLinePointer != null)
                     latterCharArray = latterLinePointer.ToCharArray();
 
+                List<char> same = new List<char>();
+                List<char> additions = new List<char>();
+                List<char> subtractions = new List<char>();
                 //if both the char arrays are not null (they have text)
                 if (formerCharArray != null && latterCharArray != null)
                 {
@@ -48,7 +53,7 @@ namespace OOPAssignment3
                         largerLineSize = latterCharArray.Length;
 
                     for (int j = 0; j < largerLineSize; j++)
-                    {
+                    { 
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
                          */
@@ -60,20 +65,17 @@ namespace OOPAssignment3
                             latterCharPointer = latterCharArray[j];
                         // If the chars are equal, then print normally.
                         if (formerCharPointer == latterCharPointer)
-                            Console.Write(formerCharPointer);
+                            same.Add(formerCharPointer);
                         // If the former char pointer is not null, and the latter is null, show it as removed.
                         else if (formerCharPointer != '\0' && latterCharPointer == '\0')
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write(formerCharPointer);
+                            subtractions.Add(formerCharPointer);
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            Console.Write(latterCharPointer);
+                            additions.Add(latterCharPointer);
                         }
                     }
-                    Console.WriteLine();
                 }
                 if (formerCharArray == null && latterCharArray != null)
                 {
