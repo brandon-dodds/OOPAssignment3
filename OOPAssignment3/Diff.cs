@@ -6,7 +6,7 @@ namespace OOPAssignment3
         private string[] Args { get; set; }
         private string[] FormerFile { get; set; }
         private string[] LatterFile { get; set; }
-        
+
         private void DiffLines()
         {
             // Determines the larger file size.
@@ -38,7 +38,7 @@ namespace OOPAssignment3
                     formerCharArray = formerLinePointer.ToCharArray();
                 if (latterLinePointer != null)
                     latterCharArray = latterLinePointer.ToCharArray();
-                
+
                 //if both the char arrays are not null (they have text)
                 if (formerCharArray != null && latterCharArray != null)
                 {
@@ -59,7 +59,7 @@ namespace OOPAssignment3
                         if (j < latterCharArray.Length)
                             latterCharPointer = latterCharArray[j];
                         // If the chars are equal, then print normally.
-                        if(formerCharPointer == latterCharPointer)
+                        if (formerCharPointer == latterCharPointer)
                             Console.Write(formerCharPointer);
                         // If the former char pointer is not null, and the latter is null, show it as removed.
                         else if (formerCharPointer != '\0' && latterCharPointer == '\0')
@@ -97,10 +97,9 @@ namespace OOPAssignment3
                 Help();
             else if (Args.Length == 3)
             {
-                Console.ResetColor();
                 FormerFile = new FileReader(Args[1]).fileContents;
                 LatterFile = new FileReader(Args[2]).fileContents;
-                if(FormerFile == null || LatterFile == null)
+                if (FormerFile == null || LatterFile == null)
                     Console.WriteLine("The files entered need to exist!");
                 else
                     DiffLines();
