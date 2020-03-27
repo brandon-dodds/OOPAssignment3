@@ -18,8 +18,8 @@ namespace OOPAssignment3
 
             for (int i = 0; i < largerFileSize; i++)
             {
+                Console.WriteLine($"Line {i + 1}");
                 // Starts with Line 0 up to the larger file size length.
-                Console.WriteLine($"Line {i}");
                 /* Two line pointers are created.
                  * They are null by default.
                  * If the index is in range for the file, the pointer becomes that line.
@@ -73,20 +73,28 @@ namespace OOPAssignment3
                         }
                         else
                         {
+                            subtractions.Add(formerCharPointer);
                             additions.Add(latterCharPointer);
                         }
                     }
                 }
                 if (formerCharArray == null && latterCharArray != null)
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(latterCharArray);
-                }
+                    additions = latterCharArray.ToList();
                 if (formerCharArray != null && latterCharArray == null)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(formerCharArray);
-                }
+                    subtractions = formerCharArray.ToList();
+                
+                Console.Write("- ");
+                Console.Write(new string(same.ToArray()));
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(new string(subtractions.ToArray()));
+                Console.WriteLine();
+                Console.ResetColor();
+
+                Console.Write("+ ");
+                Console.Write(new string(same.ToArray()));
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(new string(additions.ToArray()));
+                Console.WriteLine();
                 Console.ResetColor();
             }
         }
