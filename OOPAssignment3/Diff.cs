@@ -8,7 +8,6 @@ namespace OOPAssignment3
         private string[] Args { get; set; }
         private string[] FormerFile { get; set; }
         private string[] LatterFile { get; set; }
-
         private void DiffLines()
         {
             // Determines the larger file size.
