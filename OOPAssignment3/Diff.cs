@@ -10,12 +10,7 @@ namespace OOPAssignment3
         private string[] LatterFile { get; set; }
         private void DiffLines()
         {
-            // Determines the larger file size.
-            int largerFileSize = FormerFile.Length;
-            if (FormerFile.Length < LatterFile.Length)
-                largerFileSize = LatterFile.Length;
-
-            for (int i = 0; i < largerFileSize; i++)
+            for (int i = 0; i < FormerFile.Length || i < LatterFile.Length; i++)
             {
                 Console.WriteLine($"Line {i + 1}");
                 // Starts with Line 0 up to the larger file size length.
@@ -43,13 +38,9 @@ namespace OOPAssignment3
                 // If both the char arrays hold characters.
                 if (formerCharArray != null && latterCharArray != null)
                 {
-                    // Figure out the larger line size. (character lengths).
-                    int largerLineSize = formerCharArray.Length;
-                    if (formerCharArray.Length < latterCharArray.Length)
-                        largerLineSize = latterCharArray.Length;
                     //First for loop shows subtractions.
                     Console.Write("-: ");
-                    for (int j = 0; j < largerLineSize; j++)
+                    for (int j = 0; j < formerCharArray.Length || j < latterCharArray.Length; j++)
                     {
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
@@ -76,7 +67,7 @@ namespace OOPAssignment3
                     Console.ResetColor();
                     // Second for loop shows additions.
                     Console.Write("+: ");
-                    for (int j = 0; j < largerLineSize; j++)
+                    for (int j = 0; j < formerCharArray.Length || j < latterCharArray.Length; j++)
                     {
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
