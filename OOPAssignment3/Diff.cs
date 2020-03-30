@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace OOPAssignment3
 {
     class Diff : ICommandable
@@ -98,7 +96,6 @@ namespace OOPAssignment3
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(latterCharArray);
                 }
-
                 if (formerCharArray != null && latterCharArray == null)
                 {
                     Console.Write("-: ");
