@@ -100,6 +100,7 @@ namespace OOPAssignment3
                     Console.WriteLine();
                     fileWriter.WriteLine();
                 }
+                // If formerCharArray is null and latterCharArray is not null, stuff has been added.
                 if (formerCharArray == null && latterCharArray != null)
                 {
                     Console.Write("+: ");
@@ -108,6 +109,7 @@ namespace OOPAssignment3
                     Console.WriteLine(latterCharArray);
                     fileWriter.WriteLine(latterCharArray);
                 }
+                // If formerCharArray is not null and latterCharArray is null, stuff has been removed.
                 if (formerCharArray != null && latterCharArray == null)
                 {
                     Console.Write("-: ");
