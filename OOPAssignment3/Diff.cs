@@ -8,9 +8,11 @@ namespace OOPAssignment3
         private string[] LatterFile { get; set; }
         private void DiffLines()
         {
+            FileWriter fileWriter = new FileWriter("log.txt");
             for (int i = 0; i < FormerFile.Length || i < LatterFile.Length; i++)
             {
                 Console.WriteLine($"Line {i + 1}");
+                fileWriter.WriteLine($"Line {i + 1}");
                 // Starts with Line 0 up to the larger file size length.
                 /* Two line pointers are created.
                  * They are null by default.
@@ -38,6 +40,7 @@ namespace OOPAssignment3
                 {
                     //First for loop shows subtractions.
                     Console.Write("-: ");
+                    fileWriter.Write("-: ");
                     for (int j = 0; j < formerCharArray.Length || j < latterCharArray.Length; j++)
                     {
                         /* Create the specific char.
@@ -54,17 +57,21 @@ namespace OOPAssignment3
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write(formerCharPointer);
+                            fileWriter.Write(formerCharPointer);
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Write(formerCharPointer);
+                            fileWriter.Write(formerCharPointer);
                         }
                     }
                     Console.WriteLine();
+                    fileWriter.WriteLine();
                     Console.ResetColor();
                     // Second for loop shows additions.
                     Console.Write("+: ");
+                    fileWriter.Write("+: ");
                     for (int j = 0; j < formerCharArray.Length || j < latterCharArray.Length; j++)
                     {
                         /* Create the specific char.
@@ -81,29 +88,37 @@ namespace OOPAssignment3
                         {
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(latterCharPointer);
+                            fileWriter.Write(latterCharPointer);
                         }
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.Write(formerCharPointer);
+                            fileWriter.Write(formerCharPointer);
                         }
                     }
                     Console.WriteLine();
+                    fileWriter.WriteLine();
                 }
                 if (formerCharArray == null && latterCharArray != null)
                 {
                     Console.Write("+: ");
+                    fileWriter.Write("+: ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(latterCharArray);
+                    fileWriter.WriteLine(latterCharArray);
                 }
                 if (formerCharArray != null && latterCharArray == null)
                 {
                     Console.Write("-: ");
+                    fileWriter.Write("-: ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(formerCharArray);
+                    fileWriter.WriteLine(formerCharArray);
                 }
                 Console.ForegroundColor = ConsoleColor.White;
             }
+            fileWriter.Finish();
         }
         public void Help() => Console.WriteLine("Please enter: diff [text1] [text2]");
         public void Run()
