@@ -8,6 +8,7 @@ namespace OOPAssignment3
         {
             while (true)
             {
+                // This is the main loop, it switches on inputted commands.
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(">: [INPUT] ");
                 string userArguments = Console.ReadLine();

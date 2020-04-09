@@ -6,6 +6,7 @@ namespace OOPAssignment3
     class FileWriter
     {
         private StreamWriter currentWriter { get; set; }
+        // Overloading the write and writeline function to accept strings and chars.
         public void Write(char x)
         {
             currentWriter.Write(x);
