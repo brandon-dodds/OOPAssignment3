@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+
 namespace OOPAssignment3
 {
     class Diff : ICommandable
@@ -8,6 +10,7 @@ namespace OOPAssignment3
         private string[] LatterFile { get; set; }
         private void DiffLines()
         {
+            bool areFilesDifferent = false;
             FileWriter fileWriter = new FileWriter("log.txt");
             for (int i = 0; i < FormerFile.Length || i < LatterFile.Length; i++)
             {
@@ -58,6 +61,7 @@ namespace OOPAssignment3
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.Write(formerCharPointer);
                             fileWriter.Write(formerCharPointer);
+                            areFilesDifferent = true;
                         }
                         else
                         {
@@ -89,6 +93,7 @@ namespace OOPAssignment3
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.Write(latterCharPointer);
                             fileWriter.Write(latterCharPointer);
+                            areFilesDifferent = true;
                         }
                         else
                         {
@@ -107,7 +112,8 @@ namespace OOPAssignment3
                     fileWriter.Write("+: ");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(latterCharArray);
-                    fileWriter.WriteLine(latterCharArray);
+                    fileWriter.WriteLine(new string(latterCharArray));
+                    areFilesDifferent = true;
                 }
                 // If formerCharArray is not null and latterCharArray is null, stuff has been removed.
                 if (formerCharArray != null && latterCharArray == null)
@@ -116,19 +122,33 @@ namespace OOPAssignment3
                     fileWriter.Write("-: ");
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(formerCharArray);
-                    fileWriter.WriteLine(formerCharArray);
+                    fileWriter.WriteLine(new string(formerCharArray));
+                    areFilesDifferent = true;
                 }
                 Console.ForegroundColor = ConsoleColor.White;
+                if (areFilesDifferent)
+                {
+                    Console.WriteLine("These files are different");
+                    fileWriter.WriteLine("These files are different");
+                }
+                else
+                {
+                    Console.WriteLine("These files are the same.");
+                    fileWriter.WriteLine("These files are the same.");
+                }
             }
             fileWriter.Finish();
         }
-        public void Help() => Console.WriteLine("Please enter: diff [text1] [text2]");
+        public string Help()
+        {
+            return "Please enter: diff [text1] [text2]";
+        }
         public void Run()
         {
             if (Args.Length == 1)
                 Console.WriteLine("You have entered the diff command! Enter arguments to use this command.");
             else if (Args[1].ToLower() == "help")
-                Help();
+                Console.WriteLine(Help());
             else if (Args.Length == 3)
             {
                 FormerFile = new FileReader(Args[1]).fileContents;

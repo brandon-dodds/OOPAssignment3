@@ -2,8 +2,8 @@
 {
     interface ICommandable
     {
-        // Two functions which are required in every function.
+        // The run function and the help function are required in every function.
         void Run();
-        void Help();
+        string Help();
     }
 }

@@ -23,10 +23,6 @@ namespace OOPAssignment3
         {
             currentWriter.WriteLine();
         }
-        public void WriteLine(char[] x)
-        {
-            currentWriter.WriteLine(x);
-        }
         public void Finish()
         {
             currentWriter.Flush();
