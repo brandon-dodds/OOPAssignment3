@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 
 namespace OOPAssignment3
 {
     class Diff : Command
     {
+        // The Args[] field is inherited.
         private string[] FormerFile { get; set; }
         private string[] LatterFile { get; set; }
         private void DiffLines()
