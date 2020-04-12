@@ -2,14 +2,13 @@
 
 namespace OOPAssignment3
 {
-    class Exit : ICommandable
+    class Exit : Command
     {
-        private string[] Args { get; set; }
-        public string Help()
+        protected override string Help()
         {
             return "This command exits the program!";
         }
-        public void Run()
+        public override void Run()
         {
             if (Args.Length == 1)
                 Environment.Exit(0);
@@ -18,6 +17,9 @@ namespace OOPAssignment3
             else
                 Environment.Exit(0);
         }
-        public Exit(string[] args) => Args = args;
+        public Exit(string[] args)
+        {
+            Args = args;
+        }
     }
 }

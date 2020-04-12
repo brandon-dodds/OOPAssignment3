@@ -4,7 +4,7 @@ namespace OOPAssignment3
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             while (true)
             {
@@ -16,11 +16,11 @@ namespace OOPAssignment3
                 switch (parsedSplitArgs[0].ToLower())
                 {
                     case "diff":
-                        Diff diff = new Diff(parsedSplitArgs);
+                        var diff = new Diff(parsedSplitArgs);
                         diff.Run();
                         break;
                     case "exit":
-                        Exit exit = new Exit(parsedSplitArgs);
+                        var exit = new Exit(parsedSplitArgs);
                         exit.Run();
                         break;
                     default:

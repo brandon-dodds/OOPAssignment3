@@ -3,9 +3,8 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace OOPAssignment3
 {
-    class Diff : ICommandable
+    class Diff : Command
     {
-        private string[] Args { get; set; }
         private string[] FormerFile { get; set; }
         private string[] LatterFile { get; set; }
         private void DiffLines()
@@ -139,11 +138,11 @@ namespace OOPAssignment3
             }
             fileWriter.Finish();
         }
-        public string Help()
+        protected override string Help()
         {
             return "Please enter: diff [text1] [text2]";
         }
-        public void Run()
+        public override void Run()
         {
             if (Args.Length == 1)
                 Console.WriteLine("You have entered the diff command! Enter arguments to use this command.");
@@ -151,8 +150,8 @@ namespace OOPAssignment3
                 Console.WriteLine(Help());
             else if (Args.Length == 3)
             {
-                FormerFile = new FileReader(Args[1]).fileContents;
-                LatterFile = new FileReader(Args[2]).fileContents;
+                FormerFile = new FileReader(Args[1]).FileContents;
+                LatterFile = new FileReader(Args[2]).FileContents;
                 if (FormerFile == null || LatterFile == null)
                     Console.WriteLine("The files entered need to exist!");
                 else
@@ -161,6 +160,9 @@ namespace OOPAssignment3
             else
                 Console.WriteLine("Diff requires exactly two arguments!");
         }
-        public Diff(string[] args) => Args = args;
+        public Diff(string[] args)
+        {
+            Args = args;
+        }
     }
 }

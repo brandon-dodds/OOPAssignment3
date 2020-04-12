@@ -5,12 +5,12 @@ namespace OOPAssignment3
 {
     class FileReader
     {
-        public string[] fileContents { get; set; }
+        public string[] FileContents { get; set; }
         public FileReader(string filename)
         {
             try
             {
-                fileContents = File.ReadAllLines(filename);
+                FileContents = File.ReadAllLines(filename);
             }
             catch (FileNotFoundException)
             {
