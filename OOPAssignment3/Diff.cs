@@ -30,30 +30,24 @@ namespace OOPAssignment3
                 /* A char array is created.
                  * if the line pointers are not null, then the char array = the specific line.
                  */
-                char[] formerCharArray = null;
-                char[] latterCharArray = null;
-                if (formerLinePointer != null)
-                    formerCharArray = formerLinePointer.ToCharArray();
-                if (latterLinePointer != null)
-                    latterCharArray = latterLinePointer.ToCharArray();
 
                 // If both the char arrays hold characters.
-                if (formerCharArray != null && latterCharArray != null)
+                if (formerLinePointer != null && latterLinePointer != null)
                 {
                     //First for loop shows subtractions.
                     Console.Write("-: ");
                     fileWriter.Write("-: ");
-                    for (int j = 0; j < formerCharArray.Length || j < latterCharArray.Length; j++)
+                    for (int j = 0; j < formerLinePointer.Length || j < latterLinePointer.Length; j++)
                     {
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
                          */
                         char formerCharPointer = default;
-                        if (j < formerCharArray.Length)
-                            formerCharPointer = formerCharArray[j];
+                        if (j < formerLinePointer.Length)
+                            formerCharPointer = formerLinePointer[j];
                         char latterCharPointer = default;
-                        if (j < latterCharArray.Length)
-                            latterCharPointer = latterCharArray[j];
+                        if (j < latterLinePointer.Length)
+                            latterCharPointer = latterLinePointer[j];
                         // If the formerCharPointer isn't null, and the first one is or they arent the same, class it as a subtraction.
                         if (formerCharPointer != '\0' && latterCharPointer == '\0' || formerCharPointer != latterCharPointer)
                         {
@@ -75,17 +69,17 @@ namespace OOPAssignment3
                     // Second for loop shows additions.
                     Console.Write("+: ");
                     fileWriter.Write("+: ");
-                    for (int j = 0; j < formerCharArray.Length || j < latterCharArray.Length; j++)
+                    for (int j = 0; j < formerLinePointer.Length || j < latterLinePointer.Length; j++)
                     {
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
                          */
                         char formerCharPointer = default;
-                        if (j < formerCharArray.Length)
-                            formerCharPointer = formerCharArray[j];
+                        if (j < formerLinePointer.Length)
+                            formerCharPointer = formerLinePointer[j];
                         char latterCharPointer = default;
-                        if (j < latterCharArray.Length)
-                            latterCharPointer = latterCharArray[j];
+                        if (j < latterLinePointer.Length)
+                            latterCharPointer = latterLinePointer[j];
                         // If the formerCharPointer is null, and the second one isn't or they arent the same, class it as an addition.
                         if (formerCharPointer == '\0' && latterCharPointer != '\0' || formerCharPointer != latterCharPointer)
                         {
@@ -105,23 +99,23 @@ namespace OOPAssignment3
                     fileWriter.WriteLine();
                 }
                 // If formerCharArray is null and latterCharArray is not null, stuff has been added.
-                else if (formerCharArray == null && latterCharArray != null)
+                else if (formerLinePointer == null && latterLinePointer != null)
                 {
                     Console.Write("+: ");
                     fileWriter.Write("+: ");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(latterCharArray);
-                    fileWriter.WriteLine(new string(latterCharArray));
+                    Console.WriteLine(latterLinePointer);
+                    fileWriter.WriteLine(latterLinePointer);
                     areFilesDifferent = true;
                 }
                 // If formerCharArray is not null and latterCharArray is null, stuff has been removed.
-                else if (formerCharArray != null && latterCharArray == null)
+                else if (formerLinePointer != null && latterLinePointer == null)
                 {
                     Console.Write("-: ");
                     fileWriter.Write("-: ");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(formerCharArray);
-                    fileWriter.WriteLine(new string(formerCharArray));
+                    Console.WriteLine(formerLinePointer);
+                    fileWriter.WriteLine(formerLinePointer);
                     areFilesDifferent = true;
                 }
                 Console.ForegroundColor = ConsoleColor.White;
