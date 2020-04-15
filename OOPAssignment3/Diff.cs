@@ -26,11 +26,6 @@ namespace OOPAssignment3
                 string latterLinePointer = null;
                 if (i < LatterFile.Length)
                     latterLinePointer = LatterFile[i];
-
-                /* A char array is created.
-                 * if the line pointers are not null, then the char array = the specific line.
-                 */
-
                 // If both the char arrays hold characters.
                 if (formerLinePointer != null && latterLinePointer != null)
                 {
