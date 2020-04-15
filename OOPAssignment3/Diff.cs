@@ -105,7 +105,7 @@ namespace OOPAssignment3
                     fileWriter.WriteLine();
                 }
                 // If formerCharArray is null and latterCharArray is not null, stuff has been added.
-                if (formerCharArray == null && latterCharArray != null)
+                else if (formerCharArray == null && latterCharArray != null)
                 {
                     Console.Write("+: ");
                     fileWriter.Write("+: ");
@@ -115,7 +115,7 @@ namespace OOPAssignment3
                     areFilesDifferent = true;
                 }
                 // If formerCharArray is not null and latterCharArray is null, stuff has been removed.
-                if (formerCharArray != null && latterCharArray == null)
+                else if (formerCharArray != null && latterCharArray == null)
                 {
                     Console.Write("-: ");
                     fileWriter.Write("-: ");
@@ -125,16 +125,16 @@ namespace OOPAssignment3
                     areFilesDifferent = true;
                 }
                 Console.ForegroundColor = ConsoleColor.White;
-                if (areFilesDifferent)
-                {
-                    Console.WriteLine("These files are different");
-                    fileWriter.WriteLine("These files are different");
-                }
-                else
-                {
-                    Console.WriteLine("These files are the same.");
-                    fileWriter.WriteLine("These files are the same.");
-                }
+            }
+            if (areFilesDifferent)
+            {
+                Console.WriteLine("These files are different");
+                fileWriter.WriteLine("These files are different");
+            }
+            else
+            {
+                Console.WriteLine("These files are the same.");
+                fileWriter.WriteLine("These files are the same.");
             }
             fileWriter.Finish();
         }
