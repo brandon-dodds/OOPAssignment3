@@ -20,10 +20,9 @@ namespace OOPAssignment3
                  * They are null by default.
                  * If the index is in range for the file, the pointer becomes that line.
                  */
-                string formerLinePointer = null;
+                string formerLinePointer, latterLinePointer = formerLinePointer = null;
                 if (i < FormerFile.Length)
                     formerLinePointer = FormerFile[i];
-                string latterLinePointer = null;
                 if (i < LatterFile.Length)
                     latterLinePointer = LatterFile[i];
                 // If both the char arrays hold characters.
@@ -37,10 +36,9 @@ namespace OOPAssignment3
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
                          */
-                        char formerCharPointer = default;
+                        char formerCharPointer, latterCharPointer = formerCharPointer = default;
                         if (j < formerLinePointer.Length)
                             formerCharPointer = formerLinePointer[j];
-                        char latterCharPointer = default;
                         if (j < latterLinePointer.Length)
                             latterCharPointer = latterLinePointer[j];
                         // If the formerCharPointer isn't null, and the first one is or they arent the same, class it as a subtraction.
@@ -69,10 +67,9 @@ namespace OOPAssignment3
                         /* Create the specific char.
                          * if the char index is in range, assign it to the indexed value of the char array
                          */
-                        char formerCharPointer = default;
+                        char formerCharPointer, latterCharPointer = formerCharPointer = default;
                         if (j < formerLinePointer.Length)
                             formerCharPointer = formerLinePointer[j];
-                        char latterCharPointer = default;
                         if (j < latterLinePointer.Length)
                             latterCharPointer = latterLinePointer[j];
                         // If the formerCharPointer is null, and the second one isn't or they arent the same, class it as an addition.
