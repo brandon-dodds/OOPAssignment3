@@ -4,6 +4,7 @@ namespace OOPAssignment3
 {
     class Exit : Command
     {
+        //Override both the Help and Run functions inherited by Command.
         protected override string Help()
         {
             return "This command exits the program!";
@@ -19,6 +20,7 @@ namespace OOPAssignment3
         }
         public Exit(string[] args)
         {
+            // Assign arguments.
             Args = args;
         }
     }

@@ -13,6 +13,7 @@ namespace OOPAssignment3
                 Console.Write(">: [INPUT] ");
                 string userArguments = Console.ReadLine();
                 string[] parsedSplitArgs = userArguments.Split(" ");
+                //Create the command objects, and then run the command run function.
                 switch (parsedSplitArgs[0].ToLower())
                 {
                     case "diff":

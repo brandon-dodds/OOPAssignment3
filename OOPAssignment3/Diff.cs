@@ -130,24 +130,36 @@ namespace OOPAssignment3
         }
         public override void Run()
         {
+            //Generate the specific outcome depending on the arguments given during function creation.
             if (Args.Length == 1)
+            {
                 Console.WriteLine("You have entered the diff command! Enter arguments to use this command.");
+            }
             else if (Args[1].ToLower() == "help")
+            {
                 Console.WriteLine(Help());
+            }
             else if (Args.Length == 3)
             {
                 FormerFile = new FileReader(Args[1]).FileContents;
                 LatterFile = new FileReader(Args[2]).FileContents;
                 if (FormerFile == null || LatterFile == null)
+                {
                     Console.WriteLine("The files entered need to exist!");
+                }
                 else
+                {
                     DiffLines();
+                }
             }
             else
+            {
                 Console.WriteLine("Diff requires exactly two arguments!");
+            }
         }
         public Diff(string[] args)
         {
+            //Assign the arguments passed into the arguments field inherited by Command.
             Args = args;
         }
     }
